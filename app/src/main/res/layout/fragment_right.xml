@@ -7,10 +7,12 @@
     android:layout_height="match_parent"
     >
 
-    <ledkis.ledkisbaseapp.ui.views.ControlSwipeViewPager
-        android:id="@+id/mainScreenPager"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:background="#ffffff"
+        android:text="RIGHT"
+        android:textSize="20sp"/>
 
 </RelativeLayout>
