@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <ledkis.ledkisbaseapp.ui.views.ColoredHeaderPreferenceCategory
+        android:title="general">
+
+        <Preference
+            android:key="app_name"
+            android:title="@string/app_name">
+        </Preference>
+
+    </ledkis.ledkisbaseapp.ui.views.ColoredHeaderPreferenceCategory>
+
+
+</PreferenceScreen>
