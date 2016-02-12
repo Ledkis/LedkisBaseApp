@@ -10,8 +10,6 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.squareup.otto.Subscribe;
-
 import javax.inject.Inject;
 
 import co.mobiwise.materialintro.prefs.PreferencesManager;
@@ -21,8 +19,7 @@ import co.mobiwise.materialintro.view.MaterialIntroView;
 import ledkis.ledkisbaseapp.LedkisBaseApplication;
 import ledkis.ledkisbaseapp.R;
 import ledkis.ledkisbaseapp.core.AndroidBus;
-import ledkis.ledkisbaseapp.events.RequestIntroEvent;
-import ledkis.ledkisbaseapp.util.log.Ln;
+import ledkis.ledkisbaseapp.core.ShowcaseManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -87,23 +84,5 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-
-    @Subscribe
-    public void onRequestIntroEvent(RequestIntroEvent event) {
-        new MaterialIntroView.Builder(this)
-                .enableDotAnimation(true)
-                .setFocusGravity(FocusGravity.CENTER)
-                .setFocusType(Focus.MINIMUM)
-                .setDelayMillis(500)
-                .enableFadeAnimation(true)
-                .performClick(true)
-                .setInfoText("Basic test of MaterialIntroView")
-                .setTarget(event.getTargetView())
-                .setUsageId(System.currentTimeMillis() + "") //THIS SHOULD BE UNIQUE ID
-                .show();
-
-    }
-
 
 }

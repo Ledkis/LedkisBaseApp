@@ -15,4 +15,28 @@
         android:text="LEFT"
         android:textSize="20sp"/>
 
+    <TextView
+        android:id="@+id/showcase1TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:text="showcase1TextView"/>
+
+    <TextView
+        android:id="@+id/showcase2TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:padding="30dp"
+        android:text="showcase2TextView"/>
+
+    <TextView
+        android:id="@+id/showcase3TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:padding="100dp"
+        android:text="showcase3TextView"/>
+
 </RelativeLayout>

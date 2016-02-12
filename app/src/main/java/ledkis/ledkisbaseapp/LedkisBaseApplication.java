@@ -16,6 +16,7 @@ import javax.inject.Inject;
 import dagger.ObjectGraph;
 import ledkis.ledkisbaseapp.core.AndroidBus;
 import ledkis.ledkisbaseapp.core.ApiManager;
+import ledkis.ledkisbaseapp.core.ShowcaseManager;
 import ledkis.ledkisbaseapp.util.NetworkStatus;
 import ledkis.ledkisbaseapp.util.NetworkUtils;
 import ledkis.ledkisbaseapp.util.log.Ln;
@@ -25,6 +26,7 @@ public class LedkisBaseApplication extends Application {
 
     @Inject AndroidBus bus;
     @Inject ApiManager apiManager;
+    @Inject ShowcaseManager showcaseManager;
 
     private NetworkStatus networkStatus;
 
@@ -48,6 +50,7 @@ public class LedkisBaseApplication extends Application {
 //        initBackend();
 
         apiManager.initBus();
+        showcaseManager.initBus();
 
         updateNetworkStatus();
 

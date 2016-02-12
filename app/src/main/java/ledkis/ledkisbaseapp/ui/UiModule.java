@@ -8,12 +8,16 @@ import dagger.Module;
 import dagger.Provides;
 import ledkis.ledkisbaseapp.ui.activity.MainActivity;
 import ledkis.ledkisbaseapp.ui.fragments.CenterFragment;
+import ledkis.ledkisbaseapp.ui.fragments.LeftFragment;
+import ledkis.ledkisbaseapp.ui.fragments.RightFragment;
 import ledkis.ledkisbaseapp.ui.util.UiPreference;
 
 @Module(
         injects = {
                 MainActivity.class,
                 CenterFragment.class,
+                LeftFragment.class,
+                RightFragment.class,
         },
         complete = false,
         library = true

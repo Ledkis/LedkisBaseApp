@@ -11,6 +11,7 @@ import ledkis.ledkisbaseapp.job.LedkisBaseAppJobManager;
 @Module(
         injects = {
                 ApiManager.class,
+                ShowcaseManager.class,
         },
         complete = false,
 
@@ -29,6 +30,12 @@ public class CoreModule {
     @Provides
     ApiManager provideApiManager(final Context context) {
         return new ApiManager(context);
+    }
+
+    @Singleton
+    @Provides
+    ShowcaseManager provideShowcaseManager(final Context context) {
+        return new ShowcaseManager(context);
     }
 
 }

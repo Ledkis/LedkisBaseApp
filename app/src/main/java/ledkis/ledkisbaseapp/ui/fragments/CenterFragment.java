@@ -14,18 +14,19 @@ import co.mobiwise.materialintro.view.MaterialIntroView;
 import ledkis.ledkisbaseapp.LedkisBaseApplication;
 import ledkis.ledkisbaseapp.R;
 import ledkis.ledkisbaseapp.core.AndroidBus;
-import ledkis.ledkisbaseapp.events.RequestIntroEvent;
+import ledkis.ledkisbaseapp.events.ShowcaseEvent;
 
 
-public class CenterFragment extends Fragment {
+public class CenterFragment extends MainScreenBaseFragment {
 
     public static final String TAG = "CenterFragment";
 
-    @Inject AndroidBus bus;
-
-    View focusView;
+    View showcase1TextView;
+    View showcase2TextView;
+    View showcase3TextView;
 
     public CenterFragment() {
+        screenName = "CenterFragment";
     }
 
     public static CenterFragment newInstance() {
@@ -34,26 +35,13 @@ public class CenterFragment extends Fragment {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
+    public void showcase() {
+        View showcaseView = MaterialIntroView.getCenterShowcaseView(getActivity(), R.layout.showcase_main);
+        bus.post(new ShowcaseEvent(1, 1, showcaseView, true, screenName, getActivity()));
 
-        bus.register(this);
-
-        bus.post(new RequestIntroEvent(focusView));
-
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-
-        bus.unregister(this);
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        LedkisBaseApplication.get(getActivity()).inject(this);
+        bus.post(new ShowcaseEvent(1, 2, showcase1TextView, false, screenName, getActivity()));
+        bus.post(new ShowcaseEvent(2, 3, showcase2TextView, false, screenName, getActivity()));
+        bus.post(new ShowcaseEvent(3, 4, showcase3TextView, false, screenName, getActivity()));
     }
 
     @Override
@@ -62,11 +50,12 @@ public class CenterFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_center, container, false);
 
-        focusView = rootView.findViewById(R.id.focusView);
+        showcase1TextView = rootView.findViewById(R.id.showcase1TextView);
+        showcase2TextView = rootView.findViewById(R.id.showcase2TextView);
+        showcase3TextView = rootView.findViewById(R.id.showcase3TextView);
 
         return rootView;
 
     }
-
 
 }

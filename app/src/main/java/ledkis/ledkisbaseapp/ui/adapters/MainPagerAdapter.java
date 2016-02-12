@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import ledkis.ledkisbaseapp.R;
 import ledkis.ledkisbaseapp.ui.fragments.CenterFragment;
 import ledkis.ledkisbaseapp.ui.fragments.LeftFragment;
+import ledkis.ledkisbaseapp.ui.fragments.MainScreenBaseFragment;
 import ledkis.ledkisbaseapp.ui.fragments.RightFragment;
 
 
@@ -35,10 +36,10 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
     }
 
     @Override
-    public Fragment getItem(int position) {
+    public MainScreenBaseFragment getItem(int position) {
         // Check if this Fragment already exists.
         String name = makeFragmentName(R.id.mainScreenPager, position);
-        Fragment f = fragmentManager.findFragmentByTag(name);
+        MainScreenBaseFragment f = (MainScreenBaseFragment) fragmentManager.findFragmentByTag(name);
         if (f == null) {
             switch (position) {
                 case LEFT_POSITION:
