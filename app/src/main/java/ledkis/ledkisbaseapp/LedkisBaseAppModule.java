@@ -13,6 +13,7 @@ import ledkis.ledkisbaseapp.ui.UiModule;
 
 @Module(
         includes = {
+                AndroidModule.class,
                 CoreModule.class,
                 UiModule.class,
                 DataModule.class,

@@ -10,13 +10,36 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.squareup.otto.Subscribe;
+
+import javax.inject.Inject;
+
+import ledkis.ledkisbaseapp.LedkisBaseApplication;
 import ledkis.ledkisbaseapp.R;
+import ledkis.ledkisbaseapp.core.AndroidBus;
+import ledkis.ledkisbaseapp.events.RequestIntroEvent;
 
 public class MainActivity extends AppCompatActivity {
+
+    @Inject AndroidBus bus;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        bus.register(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        bus.unregister(this);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        LedkisBaseApplication.get(this).inject(this);
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -53,4 +76,22 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
+//    @Subscribe
+//    public void onRequestIntroEvent(RequestIntroEvent event) {
+//        new MaterialIntroView.Builder(this)
+//                .enableDotAnimation(true)
+//                .setFocusGravity(FocusGravity.CENTER)
+//                .setFocusType(Focus.MINIMUM)
+//                .setDelayMillis(500)
+//                .enableFadeAnimation(true)
+//                .performClick(true)
+//                .setInfoText("Hi There! Click this card and see what happens.")
+//                .setTarget(event.getTargetView())
+//                .setUsageId("intro_card") //THIS SHOULD BE UNIQUE ID
+//                .show();
+//    }
+
+
 }

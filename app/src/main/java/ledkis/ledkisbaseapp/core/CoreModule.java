@@ -6,6 +6,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import ledkis.ledkisbaseapp.job.LedkisBaseAppJobManager;
 
 @Module(
         injects = {
@@ -21,6 +22,13 @@ public class CoreModule {
     @Provides
     AndroidBus provideOttoBus() {
         return new AndroidBus();
+    }
+
+
+    @Singleton
+    @Provides
+    ApiManager provideApiManager(final Context context) {
+        return new ApiManager(context);
     }
 
 }
