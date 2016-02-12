@@ -13,7 +13,7 @@ import ledkis.ledkisbaseapp.ui.util.UiPreference;
 @Module(
         injects = {
                 MainActivity.class,
-//                CenterFragment.class,
+                CenterFragment.class,
         },
         complete = false,
         library = true

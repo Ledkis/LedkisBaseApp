@@ -46,4 +46,6 @@ dependencies {
     compile 'com.parse.bolts:bolts-android:1.1.4'
     compile 'com.path:android-priority-jobqueue:1.1.2'
     compile 'com.jakewharton.timber:timber:2.4.1'
+
+    compile 'com.github.iammert:MaterialIntroView:1.5'
 }

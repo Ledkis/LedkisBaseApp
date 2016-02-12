@@ -14,14 +14,22 @@ import com.squareup.otto.Subscribe;
 
 import javax.inject.Inject;
 
+import co.mobiwise.materialintro.prefs.PreferencesManager;
+import co.mobiwise.materialintro.shape.Focus;
+import co.mobiwise.materialintro.shape.FocusGravity;
+import co.mobiwise.materialintro.view.MaterialIntroView;
 import ledkis.ledkisbaseapp.LedkisBaseApplication;
 import ledkis.ledkisbaseapp.R;
 import ledkis.ledkisbaseapp.core.AndroidBus;
 import ledkis.ledkisbaseapp.events.RequestIntroEvent;
+import ledkis.ledkisbaseapp.util.log.Ln;
 
 public class MainActivity extends AppCompatActivity {
 
     @Inject AndroidBus bus;
+
+    PreferencesManager materialintroPreferencesManager;
+
 
     @Override
     protected void onResume() {
@@ -52,6 +60,9 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        materialintroPreferencesManager = new PreferencesManager(this);
+        materialintroPreferencesManager.resetAll();
     }
 
     @Override
@@ -78,20 +89,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-//    @Subscribe
-//    public void onRequestIntroEvent(RequestIntroEvent event) {
-//        new MaterialIntroView.Builder(this)
-//                .enableDotAnimation(true)
-//                .setFocusGravity(FocusGravity.CENTER)
-//                .setFocusType(Focus.MINIMUM)
-//                .setDelayMillis(500)
-//                .enableFadeAnimation(true)
-//                .performClick(true)
-//                .setInfoText("Hi There! Click this card and see what happens.")
-//                .setTarget(event.getTargetView())
-//                .setUsageId("intro_card") //THIS SHOULD BE UNIQUE ID
-//                .show();
-//    }
+    @Subscribe
+    public void onRequestIntroEvent(RequestIntroEvent event) {
+        new MaterialIntroView.Builder(this)
+                .enableDotAnimation(true)
+                .setFocusGravity(FocusGravity.CENTER)
+                .setFocusType(Focus.MINIMUM)
+                .setDelayMillis(500)
+                .enableFadeAnimation(true)
+                .performClick(true)
+                .setInfoText("Basic test of MaterialIntroView")
+                .setTarget(event.getTargetView())
+                .setUsageId(System.currentTimeMillis() + "") //THIS SHOULD BE UNIQUE ID
+                .show();
+
+    }
 
 
 }
