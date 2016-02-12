@@ -10,6 +10,7 @@ import javax.inject.Inject;
 
 import co.mobiwise.materialintro.shape.Focus;
 import co.mobiwise.materialintro.shape.FocusGravity;
+import co.mobiwise.materialintro.utils.Utils;
 import co.mobiwise.materialintro.view.MaterialIntroView;
 import ledkis.ledkisbaseapp.LedkisBaseApplication;
 import ledkis.ledkisbaseapp.R;
@@ -36,12 +37,14 @@ public class CenterFragment extends MainScreenBaseFragment {
 
     @Override
     public void showcase() {
-        View showcaseView = MaterialIntroView.getCenterShowcaseView(getActivity(), R.layout.showcase_main);
-        bus.post(new ShowcaseEvent(1, 1, showcaseView, true, screenName, getActivity()));
+        bus.post(new ShowcaseEvent(1, 1, screenName, getActivity()));
 
-        bus.post(new ShowcaseEvent(1, 2, showcase1TextView, false, screenName, getActivity()));
-        bus.post(new ShowcaseEvent(2, 3, showcase2TextView, false, screenName, getActivity()));
-        bus.post(new ShowcaseEvent(3, 4, showcase3TextView, false, screenName, getActivity()));
+        View showcaseView = MaterialIntroView.getCenterShowcaseView(getActivity(), R.layout.showcase_main);
+        bus.post(new ShowcaseEvent(1, 2, showcaseView, true, screenName, getActivity()));
+
+        bus.post(new ShowcaseEvent(1, 3, showcase1TextView, false, screenName, getActivity()));
+        bus.post(new ShowcaseEvent(2, 4, showcase2TextView, false, screenName, getActivity()));
+        bus.post(new ShowcaseEvent(3, 5, showcase3TextView, false, screenName, getActivity()));
     }
 
     @Override

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.view.View;
 
 import co.mobiwise.materialintro.target.Target;
+import co.mobiwise.materialintro.utils.Utils;
 
 public class ShowcaseEvent {
 
@@ -19,6 +20,15 @@ public class ShowcaseEvent {
         this.priority = priority;
         this.targetView = targetView;
         this.showcaseViewCase = showcaseViewCase;
+        this.screeName = screeName;
+        this.activity = activity;
+    }
+
+    public ShowcaseEvent(int showcaseId, int priority, String screeName, Activity activity) {
+        this.showcaseId = showcaseId;
+        this.priority = priority;
+        this.targetView = Utils.prepareShowcaseView(activity, new View(activity));
+        this.showcaseViewCase = true;
         this.screeName = screeName;
         this.activity = activity;
     }
